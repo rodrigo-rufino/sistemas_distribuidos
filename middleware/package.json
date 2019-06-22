@@ -1,0 +1,19 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -L index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongojs": "^2.6.0",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.19.0",
+    "restify": "^7.0.0",
+    "restify-cors-middleware": "^1.1.1"
+  }
+}

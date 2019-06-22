@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin: 50px;
+}
+
+.container * {
+    padding: 5px;
+    margin: 10px;
+}
