@@ -50,6 +50,16 @@ module.exports = {
             }
         });
     },
+    listarPorLote: (lote, callback) => {
+        db.toddy.find({lote}, (error, results) => {
+            if (error) {
+                console.log(`Error getting lote ${lote}: ${error}`);
+                callback([]);
+            } else {
+                callback(results);
+            }
+        });
+    },
     listarLotes: callback => {
         db.toddy.distinct("lote", {}, (error, results) => {
             if (error) {

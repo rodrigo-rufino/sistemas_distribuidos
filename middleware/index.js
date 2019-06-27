@@ -34,8 +34,14 @@ function listar(req, res, next) {
 	const _vencidos = req.query.vencidos === 'true';
 	const has_vencidos = req.query.vencidos !== undefined;
 	const _lote = req.query.lote;
+	const has_lote = _lote !== undefined;
+	const handle_res = default_db_res(res);
 
-	dao.listar(_id, _vencidos, has_vencidos, _lote, default_db_res(res));
+	if (has_lote) {
+		dao.listarPorLote(_lote, handle_res);
+	} else {
+		dao.listar(_id, _vencidos, has_vencidos, _lote, handle_res);
+	}
 	next();
 }
 
