@@ -14,32 +14,35 @@
 </head>
 
 <body>
-    <div class="container">
-        <h3>Lotes</h3>
-        <select name="lotes" id="lotes">
-            <option value="_placeholder">Selecione o Lote</option>
-        </select>
-        <input type="button" value="Refresh" id="refresh_btn">
-
-        <div class="container">
-            <input type="button" value="Buscar Lote" id="get_lote">
+    <div class="container"> <!-- Container do body -->
+        <div class="row"> <!-- Linha da tabela -->
+            <div class="col l3 m6 s12"> <!-- Coluna da tabela -->
+                <select id="genero">
+                    <option value="">Selecione...</option>
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <table class="table" id="lote-table">
-            <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Lote</th>
-                <th scope="col">Conteúdo</th>
-                <th scope="col">Validade</th>
-              </tr>
-            </thead>
-            <tbody id="lote-table-body">
-              
-            </tbody>
-          </table>
+        <div class="row">
+            <table id="tabela" class="responsive-table highlight centered">
+                <thead>
+                    <th>Número da Música</th>
+                    <th>Título</th>
+                    <th>Artista</th>
+                </thead>
+                <tbody>
+    
+                </tbody>
+            </table>
+        </div>
+
+        <div class = "row">
+            <p id = "lista">
+
+            </p>
+        </div>
+
+
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
