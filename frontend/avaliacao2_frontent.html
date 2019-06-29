@@ -27,8 +27,7 @@
 			<div class="row">
 				<table id="tabela" class="responsive-table highlight centered">
 					<thead>
-						<th>ID</th>
-						<th>Gênero</th>
+						<th>Número da Música</th>
 						<th>Título</th>
 						<th>Artista</th>
 					</thead>
@@ -37,6 +36,14 @@
 					</tbody>
 				</table>
 			</div>
+
+			<div class = "row">
+				<p id = "lista">
+
+				</p>
+			</div>
+
+
 		</div>
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
@@ -51,21 +58,21 @@
 			url: mid + 'listarGeneros',
 			type: 'GET',
 			success: function(result) {
-				$.each(result, function(indice, musicfy) {
-					$("#genero").append(`<option value="` + musicfy.genero + `">` + musicfy.genero + `</option>`);
+				$.each(result, function(indice, genero) {
+					$("#genero").append(`<option value="` + genero.descricao + `">` + genero.descricao + `</option>`);
 				});
 			},
 			error: function() {
 				alert('Houve um erro.');
 			},
 			complete: function() {
-				$('#genero').formSelect(); //Carregando o select do materialize css (só devemos carregar após popular)
+				$('#genero').formSelect();
 			}
 		})
 	});
 
 	$("#genero").change(function() {
-		$("#tabela > tbody").empty(); //Limpando a lista
+		$("#tabela > tbody").empty();
 
 		var genero_id = this.value;
 		
@@ -73,23 +80,33 @@
 			url: mid + 'buscarMusicaPorGenero?genero_id=' + genero_id,
 			type: 'GET',
 			beforeSend: function() {
-				$("#genero").attr("disabled", true); //Desabilitando o combo box
+				$("#genero").attr("disabled", true);
 			},
 			success: function(result) {
-				$.each(result, function(indice, toddy) {
+				/*$.each(result, function(indice, musica) {
 					$("#tabela > tbody").append(`<tr>`
-						+`<td>`+ musicfy.musica_id + `</td>`
-						+`<td>`+ musicfy.genero_id + `</td>`
-						+`<td>`+ musicfy.titulo + `ml</td>`
-						+`<td>`+ musicfy.artista + `</td>`
+						+`<td>`+ musica.musica_id + `</td>`
+						+`<td>`+ musica.titulo + `ml</td>`
+						+`<td>`+ musica.artista + `</td>`
 						+`</tr>`);
+				});*/
+
+				$.each(result, function(indice, musica) {
+					$("#lista").append(`<ul>`
+						+`<li>`+ musica.musica_id + `</td>`
+							+ `<ul>`
+							+`<li>`+ musica.titulo + `ml</td>`
+							+`<li>`+ musica.artista + `</td>`
+							+`</ul>`
+						+`</ul>`);
 				});
+
 			},
 			error: function() {
 				alert('Houve um erro.');
 			},
 			complete: function() {
-				$("#genero").attr("disabled", false); //Habilitando o combo box
+				$("#genero").attr("disabled", false);
 			}
 		})
 	});
