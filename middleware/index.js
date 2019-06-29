@@ -22,7 +22,25 @@ server.get('/', (req, res, next) => {
 });
 
 server.get('/get_musicas', (req, res, next) => {
-	dao.test((data) => res.send(data));
+	dao.getMusicas((data) => res.send(data));
+	next();
+});
+
+server.get('/musicfy/listarGenero', (req, res, next) => {
+	dao.listarGeneros((data) => res.json(data));
+	next();
+});
+
+server.get('/musicfy/buscarMusicaPorGenero', (req, res, next) => {
+	const genero_id = req.query.genero_id;
+	
+	if (genero_id === undefined) {
+		res.send(`undefined genero id`);
+	} else {
+		dao.getMusicasByGenero(genero_id, (data) => res.json(data));
+	}
+
+	next();
 });
 
 const PORT = 5000;
