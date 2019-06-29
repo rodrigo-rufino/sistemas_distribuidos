@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongojs": "^2.6.0",
     "mysql": "^2.16.0",
     "nodemon": "^1.19.0",
     "restify": "^7.0.0",

@@ -1,13 +1,15 @@
 version: '3.1'
 
 services:
-  mongo:
-    image: mongo
+  db:
+    image: mysql:5
     restart: always
-    ports:
-      - '27017:27017'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
     volumes:
-      - mongo_db:/data/db
+      - db:/var/lib/mysql
+    ports:
+      - '3306:3306'
   node:
     image: node
     restart: always
@@ -19,7 +21,7 @@ services:
       - '5000:5000'
     command: "npm start"
     depends_on:
-      - mongo
+      - db
   server:
     image: python
     restart: always
@@ -34,4 +36,4 @@ services:
       - http.server
 
 volumes:
-  mongo_db:
+  db:
