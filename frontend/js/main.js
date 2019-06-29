@@ -10,6 +10,7 @@ $(document).ready(function () {
     $.ajax({
         url: mid + 'listarGeneros',
         beforeSend: () => {
+            console.log(`before send`);
             disable_box(true);
         }
     }).done(result => {
